@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "AddStudent";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model CMS.Models.StudentUser
+<head>
+    <script src="~/jquery/jquery-2.1.4.min.js" type="text/javascript"></script>
+
+    <script src="~/bootstrap-3.3.4-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Profile.css" />
+
+    <script>
+        function ValidateRollNo() {
+            var rollNo = $("#rollNo").val();
+            $.ajax({
+                url: '/Admin/IsRollNoAvailable',
+                contentType: 'application/html; charset=utf-8',
+                data: { rollNo: rollNo },
+                type: 'GET',
+                dataType: 'html'
+
+            })
+            .success(function (result) {
+                $('#Message').html(result);
+            })
+            .error(function (xhr, status) {
+                alert(status);
+            })
+        }
+    </script>
+
+
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Add Student</title>
+
+</head>
+
+<div class="row">
+    <div class="col-lg-5">
+        @using (Html.BeginForm("AddNewStudent", "Admin", FormMethod.Post))
+        {
+            @Html.LabelFor(m => m.User.UserName)
+            @Html.TextBoxFor(m => m.User.UserName, new { Class = "form-control form-inline form-group", placeHolder = "User Name", required = true })
+
+            @Html.LabelFor(m => m.Student.Name)
+            @Html.TextBoxFor(m => m.Student.Name, new { Class = "form-control form-inline form-group", placeHolder = "Name", required = true })
+
+            @Html.LabelFor(m => m.Student.RollNo)
+            @Html.TextBoxFor(m => m.Student.RollNo, new { Class = "form-control form-inline form-group", placeHolder = "Roll No", required = true, onblur = "ValidateRollNo()", id = "rollNo" })
+
+            <p id="Message"></p>
+            
+            @Html.LabelFor(m => m.User.Password)
+            @Html.TextBoxFor(m => m.User.Password, new { Class = "form-control form-inline form-group", placeHolder = "Password", required = true })
+
+            <input class="btn btn-success pull-right" type="submit" value="Add" />
+        }
+    </div>
+</div>

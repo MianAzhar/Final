@@ -1,0 +1,132 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model CMS.Models.AddDropRequest
+
+<head>
+    <script src="~/jquery/jquery-2.1.4.min.js" type="text/javascript"></script>
+
+    <script src="~/bootstrap-3.3.4-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Profile.css" />
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+</head>
+
+<legend style="padding-top:30px">Add Subject Requests</legend>
+<div class="row" style="padding-left:30px">
+    @if(Model.AddSubject.Count < 1)
+    {
+        <p>No requests.</p>
+    }
+    else
+    {
+        <table class="table table-hover" >
+            <thead>
+                <tr>
+                    <th>
+                        Roll #
+                    </th>
+                    <th>
+                        Student Name
+                    </th>
+                    <th>
+                        Course Title
+                    </th>
+                    <th>
+                        Instructor
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var add in Model.AddSubject)
+                {
+                    <tr>
+                        <td>
+                            @add.Student.RollNo
+                        </td>
+                        <td>
+                            @add.Student.Name
+                        </td>
+                        <td>
+                            @add.Course.Title
+                        </td>
+                        <td>
+                            @add.Teacher.Name
+                        </td>
+                        <td>
+                            @Html.ActionLink("Approve", "AssignStudentCourse", new { sid = add.StudentId, course = add.Course.Title, teacher = add.Teacher.Name }) | 
+                            @Html.ActionLink("Cancel", "CancelAddRequest", new { sid = add.StudentId, cid = add.CourseId, tid = add.TeacherId })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+<legend style="padding-top:10px">Drop Subject Requests</legend>
+<div class="row" style="padding-left:30px">
+    @if (Model.DropSubject.Count < 1)
+    {
+        <p>No requests.</p>
+    }
+    else
+    {
+        <table class="table table-hover" >
+            <thead>
+                <tr>
+                    <th>
+                        Roll #
+                    </th>
+                    <th>
+                        Student Name
+                    </th>
+                    <th>
+                        Course Title
+                    </th>
+                    <th>
+                        Instructor
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var drop in Model.DropSubject)
+                {
+                    <tr>
+                        <td>
+                            @drop.Student.RollNo
+                        </td>
+                        <td>
+                            @drop.Student.Name
+                        </td>
+                        <td>
+                            @drop.Course.Title
+                        </td>
+                        <td>
+                            @drop.Teacher.Name
+                        </td>
+                        <td>
+                            @Html.ActionLink("Approve", "DropStudentCourse", new { sid = drop.StudentId, cid = drop.CourseId }) | 
+                            @Html.ActionLink("Cancel", "CancelDropRequest", new { sid = drop.StudentId, cid = drop.CourseId })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

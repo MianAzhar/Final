@@ -1,0 +1,12 @@
+﻿
+@using CMS.Models
+@model System.Collections.Generic.List<CMS.Models.Teacher>
+
+Select Teacher: <select class="form-control" id="teacherName" name="teacher">
+    <option>--Select Teacher--</option>
+
+    @foreach (Teacher teacher in Model)
+    {
+        <option value="@teacher.Name">@teacher.Name</option>
+    }
+</select>

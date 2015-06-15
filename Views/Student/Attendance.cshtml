@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Attendance";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+@using CMS.Models
+@using System.Collections
+
+@model System.Collections.Generic.List<Attendance>
+
+
+<head>
+    <script src="~/jquery/jquery-2.1.4.min.js" type="text/javascript"></script>
+
+    <script src="~/bootstrap-3.3.4-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+
+<div class="row">
+    <h4>Course: @ViewBag.courseName     Instructor: @ViewBag.teacherName </h4>
+
+</div>
+
+<div class="row">
+
+    <div class="col-lg-1"></div>
+    <div class="col-xs-5">
+        <div class="table">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(Attendance at in Model)
+                    {
+                        <tr>
+                        <td>@at.Date.ToString("d")</td>
+                            @if(at.Status)
+                            { 
+                                 <td class="text-success">P</td>
+                            }
+                            else
+                            {
+                                <td class="text-danger">A</td>
+                            }
+                        </tr>
+                    }
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

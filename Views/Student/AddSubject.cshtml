@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "AddSubject";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+@using CMS.Models
+
+@model System.Collections.Generic.List<Course>
+<head>
+ 
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Profile.css" />
+    
+    <script>
+        function GetTeacher() {
+            var course = $("#course").val();
+            $.ajax({
+                url: '/Student/GetTeacherList',
+                contentType: 'application/html; charset=utf-8',
+                data: { courseTitle: course },
+                type: 'GET',
+                dataType: 'html'
+
+            })
+            .success(function (result) {
+                $('#teacher').html(result);
+            })
+            .error(function (xhr, status) {
+                alert(status);
+            })
+        }
+
+        function sendReques() {
+            var courseId = $("#course").val();
+            var teacherId = $("#teacherName").val();
+            $.ajax({
+                url: '/Student/RequestAddSubject',
+                contentType: 'application/html; charset=utf-8',
+                data: { course: courseId, teacher: teacherId },
+                type: 'GET',
+                dataType: 'html'
+
+            })
+            .success(function (result) {
+                $('#action').html(result);
+                
+            })
+            .error(function (xhr, status) {
+                alert(status);
+            })
+        }
+    </script>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Add Subject</title>
+</head>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="panel-title">
+            Add Subject
+        </div>
+    </div>
+    <div class="panel-body">
+        <form role="form" >
+            <div class="form-group form-inline">
+                Select Subject: <select id="course" class="form-control" name="course" onchange="GetTeacher()">
+                    <option>--Select Course--</option>
+
+                    @foreach (Course course in Model)
+                    {
+                        <option>@course.Title</option>
+                    }
+                </select>
+            </div>
+            <div id="teacher" class="form-group form-inline">
+
+            </div>
+            <input type="submit" class="btn btn-success" value="Add Subject" onclick="sendReques()" />
+        </form>
+    </div>
+    <div id="action" class="panel-footer">
+
+    </div>
+</div>
+

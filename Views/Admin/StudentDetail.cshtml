@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "StudentDetail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using CMS.Models
+
+@model System.Collections.Generic.List<TeacherCourse>
+<head>
+    <script src="~/jquery/jquery-2.1.4.min.js" type="text/javascript"></script>
+
+    <script src="~/bootstrap-3.3.4-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Profile.css" />
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Add Student</title>
+
+</head>
+
+<div class="row">
+    <table cellpadding="100">
+        <tr>
+            <td><label>Roll #: </label></td>
+            <td align="right"><input disabled  id="id" type="text" value="@ViewBag.StudentUser.Student.RollNo" /></td>
+        </tr>
+        <tr style="padding-top:10px">
+            <td><label>Name: </label></td>
+            <td align="right"><input disabled id="id" type="text" value="@ViewBag.StudentUser.Student.Name" /></td>
+        </tr>
+        <tr style="padding-top:10px">
+            <td><label>Username: </label>  </td>
+            <td align="right"><input disabled id="id" type="text" value="@ViewBag.StudentUser.User.UserName" /></td>
+        </tr>
+        <tr style="padding-top:100px">
+            <td><label>Password: </label></td>
+            <td align="right"><input disabled id="id" type="text" value="@ViewBag.StudentUser.User.Password" /></td>
+        </tr>
+        <tr style="padding-top:100px">
+            <td><label>Credit Hrs: </label></td>
+            <td align="right"><input disabled id="id" type="text" value="@ViewBag.StudentUser.Student.CreditHour" /></td>
+        </tr>
+    </table>
+</div>
+
+<div class="row">
+    <h2>Courses</h2>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Course Title</th>
+                <th>Instructor</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{int num = 1;}
+            @foreach (TeacherCourse s in Model)
+            {
+                <tr>
+                    <td>@num</td>
+                    <td>@s.Course.Title</td>
+                    <td>@s.Teacher.Name</td>
+                    <td><a href="~/Admin/DropStudentCourse?sid=@ViewBag.StudentUser.Student.Id &cid=@s.Course.Id ">Delete</a></td>
+                </tr>
+                num++;
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-primary pull-right" href="~/Admin/AddStudentCourse?sid=@ViewBag.StudentUser.Student.Id ">Assign Course</a>
+</div>

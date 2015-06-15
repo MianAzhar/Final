@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "GradeBook";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+@using CMS.Models
+
+@model System.Collections.Generic.List<SessionalMarks>
+
+<head>
+    <script src="~/jquery/jquery-2.1.4.min.js" type="text/javascript"></script>
+
+    <script src="~/bootstrap-3.3.4-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+
+<div class="row">
+    <div class="col-lg-1"></div>
+
+    <div class="col-xs-8">
+        <div class="table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Obt. Marks</th>
+                        <th>Abs. Marks</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (SessionalMarks mark in Model) 
+                    {
+                        <tr class="success">
+                           <td>@mark.Sessionals.Title</td>
+                           <td>@mark.Marks.ObtainedMarks / @mark.Sessionals.TotalMarks</td>
+                           <td>@(mark.Marks.ObtainedMarks/mark.Sessionals.TotalMarks*mark.Sessionals.Weightage) / @mark.Sessionals.Weightage</td>
+                           <td>@(mark.Marks.ObtainedMarks / mark.Sessionals.TotalMarks *100) %</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

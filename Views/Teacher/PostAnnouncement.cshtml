@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "PostAnnouncement";
+    Layout = "~/Views/Shared/_TeacherLayout.cshtml";
+}
+
+<head>
+    <script src="~/jquery/jquery-2.1.4.min.js" type="text/javascript"></script>
+
+    <script src="~/bootstrap-3.3.4-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Profile.css" />
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Attendance</title>
+
+</head>
+
+<div class="row">
+    <form role="form" method="post" action="AddAnnouncement">
+        Title: <input class="form-control" type="text" name="title" /> <br />
+        Message: <textarea class="form-control" name="message" rows="3"></textarea> <br />
+        <input type="hidden" value="@Model" name="CourseId" />
+        <input type="submit" class="btn btn-success pull-right" value="Post" />
+    </form>
+</div>

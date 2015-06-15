@@ -1,0 +1,73 @@
+﻿@model System.Collections.Generic.List<CMS.Models.Course>
+
+@{
+    ViewBag.Title = "Course";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<head>
+    <script src="~/jquery/jquery-2.1.4.min.js" type="text/javascript"></script>
+
+    <script src="~/bootstrap-3.3.4-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Profile.css" />
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Students</title>
+
+    <script>
+        $(document).ready(function ($) {
+            $("tr[name=clickable-row]").click(function () {
+                window.document.location = $(this).data("href");
+            });
+        });
+    </script>
+
+</head>
+
+<div class="row">
+    <a class="btn btn-primary" href="~/Admin/AddCourse">Add new Course</a>
+</div>
+
+<div class="row" style="padding-top:30px">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Code
+                </th>
+                <th>
+                    Credit Hr.
+                </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+{
+    <tr name="clickable-row" data-href='/Admin/CourseDetail?cid=@item.Id'>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CrdeitHour)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditCourse", new { cid = item.Id }) |
+            @Html.ActionLink("Delete", "DeleteCourse", new { cid = item.Id })
+        </td>
+    </tr>
+}
+        </tbody>
+    </table>
+    </div>

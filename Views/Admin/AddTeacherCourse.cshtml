@@ -1,0 +1,54 @@
+﻿@using CMS.Models
+@model System.Collections.Generic.List<CMS.Models.Course>
+
+@{
+    ViewBag.Title = "AddTeacherCourse";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<head>
+    <script src="~/jquery/jquery-2.1.4.min.js" type="text/javascript"></script>
+
+    <script src="~/bootstrap-3.3.4-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Profile.css" />
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Students</title>
+
+</head>
+
+<div class="row">
+    <table cellpadding="100">
+        <tr style="padding-top:10px">
+            <td><label>Name: </label></td>
+            <td align="right"><input disabled id="id" type="text" value="@ViewBag.Teacher.Name" /></td>
+        </tr>
+        <tr style="padding-top:10px">
+            <td><label>Type: </label>  </td>
+            <td align="right"><input disabled id="id" type="text" value="@ViewBag.Teacher.Type" /></td>
+        </tr>
+
+    </table>
+</div>
+
+<div class="row" style="padding-top:30px">
+    <form role="form" action="~/Admin/AssignTeacherCourse" method="post">
+        <input type="hidden" name="tid" value="@ViewBag.Teacher.Id" />
+        <div class="form-group form-inline">
+            Select Subject: <select id="course" class="form-control" name="course" id="sel1">
+                <option>--Select Course--</option>
+
+                @foreach (Course course in Model)
+                {
+                    <option>@course.Title</option>
+                }
+            </select>
+        </div>
+        <input type="submit" class="btn btn-success" value="Add Subject" />
+    </form>
+</div>

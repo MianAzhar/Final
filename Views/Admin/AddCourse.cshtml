@@ -1,0 +1,40 @@
+﻿@model CMS.Models.Course
+
+@{
+    ViewBag.Title = "AddCourse";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<head>
+    <script src="~/jquery/jquery-2.1.4.min.js" type="text/javascript"></script>
+
+    <script src="~/bootstrap-3.3.4-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Profile.css" />
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Add Course</title>
+
+</head>
+
+<div class="row">
+    <div class="col-lg-5">
+        @using (Html.BeginForm("AddNewCourse", "Admin", FormMethod.Post))
+        {
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title, new { Class = "form-control form-inline form-group", placeHolder = "Course Title", required = true })
+
+            @Html.LabelFor(m => m.Code)
+            @Html.TextBoxFor(m => m.Code, new { Class = "form-control form-inline form-group", placeHolder = "Course Code", required = true })
+
+            @Html.LabelFor(m => m.CrdeitHour)
+            @Html.TextBoxFor(m => m.CrdeitHour, new { Class = "form-control form-inline form-group", placeHolder = "Credit Hr.", required = true })
+
+            <input class="btn btn-success pull-right" type="submit" value="Add" />
+        }
+    </div>
+</div>

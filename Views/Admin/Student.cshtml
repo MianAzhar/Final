@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Student";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using CMS.Models
+
+@model System.Collections.Generic.List<Student>
+
+<head>
+    <script src="~/jquery/jquery-2.1.4.min.js" type="text/javascript"></script>
+
+    <script src="~/bootstrap-3.3.4-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Profile.css" />
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Students</title>
+
+    <script>
+        $(document).ready(function ($) {
+            $("tr[name=clickable-row]").click(function () {
+                window.document.location = $(this).data("href");
+            });
+        });
+    </script>
+
+</head>
+
+<div class="row">
+    <a class="btn btn-primary" href="~/Admin/AddStudent">Add new Studend</a> 
+</div>
+
+<div class="row" style="padding-top:30px">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Roll #</th>
+                <th>Name</th>
+                <th>UserName</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Student s in Model)
+{
+    <tr name="clickable-row" data-href='/Admin/StudentDetail?sid=@s.Id'>
+        <td>@s.RollNo</td>
+        <td>@s.Name</td>
+        <td>@s.User.UserName</td>
+        <td>@s.User.Password</td>
+    </tr>
+}
+        </tbody>
+    </table>
+</div>

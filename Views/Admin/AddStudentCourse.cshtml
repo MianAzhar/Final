@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "AddStudentCourse";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using CMS.Models
+
+@model System.Collections.Generic.List<CMS.Models.Course>
+
+<head>
+    <script src="~/jquery/jquery-2.1.4.min.js" type="text/javascript"></script>
+
+    <script src="~/bootstrap-3.3.4-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Profile.css" />
+
+    <script>
+        function GetTeacher()
+        {
+            var course = $("#course").val();
+            $.ajax({
+                url: '/Admin/GetTeacherList',
+                contentType: 'application/html; charset=utf-8',
+                data: { courseTitle: course },
+                type: 'GET',
+                dataType: 'html'
+
+            })
+            .success(function (result) {
+                $('#teacher').html(result);
+            })
+            .error(function (xhr, status) {
+                alert(status);
+            })
+        }
+    </script>
+
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Students</title>
+
+</head>
+
+<div class="row">
+    <table cellpadding="100">
+        <tr>
+            <td><label>Roll #: </label></td>
+            <td align="right"><input disabled id="id" type="text" value="@ViewBag.Student.RollNo" /></td>
+        </tr>
+        <tr style="padding-top:10px">
+            <td><label>Name: </label></td>
+            <td align="right"><input disabled id="id" type="text" value="@ViewBag.Student.Name" /></td>
+        </tr>
+        <tr style="padding-top:10px">
+            <td><label>Credit Hr.: </label>  </td>
+            <td align="right"><input disabled id="id" type="text" value="@ViewBag.Student.CreditHour" /></td>
+        </tr>
+        
+    </table>
+</div>
+
+<div class="row" style="padding-top:30px">
+    <form role="form" action="~/Admin/AssignStudentCourse" method="post">
+        <input type="hidden" name="sid" value="@ViewBag.Student.Id" />
+        <div class="form-group form-inline">
+            Select Subject: <select id="course" class="form-control" name="course" id="sel1" onchange="GetTeacher()">
+            <option>--Select Course--</option>
+            
+            @foreach(Course course in Model)
+            {
+                <option>@course.Title</option>
+            }
+            </select>
+        </div>
+        <div id="teacher" class="form-group form-inline">
+            
+        </div>
+        <input type="submit" class="btn btn-success" value="Add Subject" />
+    </form>
+</div>

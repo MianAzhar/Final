@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "SessionalDetail";
+    Layout = "~/Views/Shared/_TeacherLayout.cshtml";
+}
+
+@model System.Collections.Generic.List<CMS.Models.StudentMarks>
+
+<head>
+    <script src="~/jquery/jquery-2.1.4.min.js" type="text/javascript"></script>
+
+    <script src="~/bootstrap-3.3.4-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Profile.css" />
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Students</title>
+
+</head>
+
+<div class="row">
+    <table cellpadding="100">
+
+        <tr style="padding-top:10px">
+            <td><label>Title: </label></td>
+            <td align="right"><input disabled id="id" type="text" value="@ViewBag.Sessional.Title" /></td>
+        </tr>
+        <tr style="padding-top:10px">
+            <td><label>Total Marks: </label>  </td>
+            <td align="right"><input disabled id="id" type="text" value="@ViewBag.Sessional.TotalMarks" /></td>
+        </tr>
+        <tr style="padding-top:100px">
+            <td><label>Weightage: </label></td>
+            <td align="right"><input disabled id="id" type="text" value="@ViewBag.Sessional.Weightage" /></td>
+        </tr>
+    </table>
+</div>
+
+<form role="form" method="post" action="UpdateMarks">
+    
+        <input type="hidden" name="sessionalId" value="@ViewBag.Sessional.Id" />
+ 
+    <br />
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Roll #</th>
+                    <th>Name</th>
+                    <th>@ViewBag.Sessional.Title (@ViewBag.Sessional.TotalMarks)</th>
+                    
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj in Model)
+                {
+                    <tr>
+                        <td>@obj.Student.RollNo</td>
+                        <td>@obj.Student.Name</td>
+                        <td><input name="@("chk_"+obj.Student.Id)" type="number" value="@obj.Marks.ObtainedMarks" required/></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <input type="submit" class="btn btn-success pull-right" value="Submit Marks" />
+
+    </div>
+
+</form>

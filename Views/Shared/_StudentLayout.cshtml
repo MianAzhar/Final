@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="~/jquery/jquery-2.1.4.min.js" type="text/javascript"></script>
+
+    <script src="~/bootstrap-3.3.4-dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+
+    <link rel="stylesheet" type="text/css" href="~/Content/sidebar.css" />
+    <script type="text/javascript" src="~/Content/sidebar.js"></script>
+
+    <meta name="viewport" content="width=device-width" />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    
+    <div class="container">
+        <nav class="navbar navbar-inverse" >
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("CMS", "Index", null, new{Class="navbar-brand"})
+                    
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <div class="btn-group" role="group" aria-label="...">
+                                <a href="~/Student/Profile" class="btn btn-success"><span class="glyphicon glyphicon-user"></span> Profile</a>
+                                <a href="~/Home/Logout" class="btn btn-primary"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+
+
+                            </div>
+                        </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>  
+     </div>
+
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-4">
+            <h2>@ViewBag.Title</h2>
+        </div>
+    </div>
+
+    <div class="col-lg-1"></div>
+
+    <div class="col-lg-2">
+        <table class="table table-bordered" >
+            <thead>
+                <tr>
+                    <th>Quick Links</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.ActionLink("Update Profile", "profile")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.ActionLink("Add Subject", "AddSubject")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.ActionLink("Drob Subject", "DropSubject")
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-lg-7">
+
+        @RenderBody();
+    
+    </div>
+
+    
+
+    <nav class="navbar-fixed-bottom">
+        <div class="container-fluid">
+            <p>CMS: 2015 All right reserved</p>
+            </div>
+    </nav>    
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

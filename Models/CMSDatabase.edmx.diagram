@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e1510a9457a9493bb7ef326cb7957c65" Name="Diagram1">
+        <EntityTypeShape EntityType="CMSModel.Admin" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Announcement" Width="1.5" PointX="5.25" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Attendance" Width="1.5" PointX="5.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Course" Width="1.5" PointX="3" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.File" Width="1.5" PointX="8.25" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Mark" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Sessional" Width="1.5" PointX="5.25" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Student" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Take" Width="1.5" PointX="8.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Teach" Width="1.5" PointX="8.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.Teacher" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMSModel.User" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <AssociationConnector Association="CMSModel.FK__Admin__UID__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="CMSModel.FK__Announcem__Cours__02084FDA" ManuallyRouted="false" />
+        <AssociationConnector Association="CMSModel.FK__Announcem__Teach__01142BA1" ManuallyRouted="false" />
+        <AssociationConnector Association="CMSModel.FK__Attendanc__Cours__04E4BC85" ManuallyRouted="false" />
+        <AssociationConnector Association="CMSModel.FK__Attendanc__Stude__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="CMSModel.FK__Attendanc__Teach__03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="CMSModel.FK__File__CourseId__2A164134" ManuallyRouted="false" />
+        <AssociationConnector Association="CMSModel.FK__Sessional__Cours__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="CMSModel.FK__Take__CourseId__0B91BA14" ManuallyRouted="false" />
+        <AssociationConnector Association="CMSModel.FK__Teach__CourseId__0D7A0286" ManuallyRouted="false" />
+        <AssociationConnector Association="CMSModel.FK__File__TeacherId__29221CFB" ManuallyRouted="false" />
+        <AssociationConnector Association="CMSModel.FK__Marks__Sessional__05D8E0BE" ManuallyRouted="false" />
+        <AssociationConnector Association="CMSModel.FK__Marks__StudentId__06CD04F7" ManuallyRouted="false" />
+        <AssociationConnector Association="CMSModel.FK__Sessional__Teach__08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="CMSModel.FK__Student__UID__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="CMSModel.FK__Take__StudentId__09A971A2" ManuallyRouted="false" />
+        <AssociationConnector Association="CMSModel.FK__Take__TeacherId__0A9D95DB" ManuallyRouted="false" />
+        <AssociationConnector Association="CMSModel.FK__Teach__TeacherId__0C85DE4D" ManuallyRouted="false" />
+        <AssociationConnector Association="CMSModel.FK__Teacher__UID__30F848ED" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CMSModel.AddSubject" Width="1.5" PointX="11.25" PointY="17.125" />
+        <EntityTypeShape EntityType="CMSModel.DropSubject" Width="1.5" PointX="8.25" PointY="21.125" />
+        <AssociationConnector Association="CMSModel.FK__AddSubjec__Cours__3E1D39E1" />
+        <AssociationConnector Association="CMSModel.FK__AddSubjec__Stude__3C34F16F" />
+        <AssociationConnector Association="CMSModel.FK__AddSubjec__Teach__3D2915A8" />
+        <AssociationConnector Association="CMSModel.FK__DropSubje__Cours__42E1EEFE" />
+        <AssociationConnector Association="CMSModel.FK__DropSubje__Stude__40F9A68C" />
+        <AssociationConnector Association="CMSModel.FK__DropSubje__Teach__41EDCAC5" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
